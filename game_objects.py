@@ -20,4 +20,7 @@ class Piece:
         def save_high_score(new_score):
             if new_score > get_high_score():
                 with open(HS_FILE, "w") as f: f.write(str(new_score))
-                
+
+
+        
+
