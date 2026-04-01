@@ -11,7 +11,7 @@ HS_FILE = "highscore.txt"
 # Colors
 
 WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
+BLACK = (0, 0, 0) 
 COLORS = [ (0, 255, 255), (255, 255, 0), (128, 0, 128), (0, 0, 225), (255, 0, 0), (255, 165, 0), (0, 225, 0)   ]
 
 # Custom Shapes: I, O, T, V, X
