@@ -1,1 +1,9 @@
 import pygame
+
+# Screen & Grid
+
+SCREEN_WIDTH, SCREEN_HEIGHT = 600, 650
+BLOCK_SIZE = 30
+GRID_WIDTH, GRID_HEIGHT = 10, 18
+GAME_X, GAME_Y, SIDEBAR_X = 50, 50, 400
+HS_FILE = "highscore.txt"
