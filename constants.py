@@ -10,3 +10,6 @@ HS_FILE = "highscore.txt"
 
 # Colors
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+COLORS = [ (0, 255, 255), ]
