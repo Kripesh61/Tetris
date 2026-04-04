@@ -68,8 +68,73 @@ def main():
         clock = pygame.time.Clock()
         fall_time, score, placements = 0, 0, 0
         play_bgm()
-        
-         
+
+        while run:
+            grid = create_grid(locked_pos)
+            fall_time += clock.get_rawtime()
+            clock.tick()
+            fall_speed = max(80, 450 - ((score // 200) * 60))
+
+            if fall_time > fall_speed and not choosing_mode and not game_over:
+                fall_time = 0
+                current_p.y += 1
+                if not valid_space(current_p, grid):
+                    current_p.y -= 1
+                    if current_p.is_bomb:
+                        u_pos = (current_p.x, current_p.y + 1)
+                        if u_pos in locked_pos and locked_pos[u_pos] == current_p.color:
+                            if sfx_explode: sfx_explode.play()
+                            for i in range(current_p.x-1, current_p.x+2):
+                                for j in range(current_p.y-1, current_p.y+2):
+                                    if (i,j) in locked_pos: del locked_pos[(i,j)]
+                            score += 50
+                        elif u_pos in locked_pos: game_over = True
+                    
+                    if not game_over:
+                        if sfx_place: sfx_place.play()
+                        for y, row in enumerate(current_p.shape):
+                            for x, val in enumerate(row):
+                                if val: locked_pos[(current_p.x + x, current_p.y + y)] = current_p.color
+                        score += 10; placements += 1
+                        current_p = next_p
+                        next_p = Piece(4, 0, random.choice(SHAPES), random.random() < 0.25)
+                        if placements % 10 == 0: choosing_mode = True
+                        if not valid_space(current_p, grid): game_over = True
+            
+            if game_over: pygame.mixer.music.stop()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: pygame.quit(); return
+                if event.type == pygame.KEYDOWN:
+                    if game_over:
+                        if event.key == pygame.K_r: save_high_score(score); run = False
+                        if event.key == pygame.K_q: pygame.quit(); return
+                    elif choosing_mode:
+                        if event.key in range(pygame.K_1, pygame.K_6):
+                            current_p = Piece(4, 0, SHAPES[event.key - 49])
+                            choosing_mode = False
+                    else:
+                        if event.key == pygame.K_LEFT:
+                            current_p.x -= 1
+                            if not valid_space(current_p, grid): current_p.x += 1
+                        if event.key == pygame.K_RIGHT:
+                            current_p.x += 1
+                            if not valid_space(current_p, grid): current_p.x -= 1
+                        if event.key == pygame.K_DOWN:
+                            current_p.y += 1
+                            if not valid_space(current_p, grid): current_p.y -= 1
+
+            draw_window(win, grid, score, get_high_score(), choosing_mode, next_p, game_over)
+            if not choosing_mode and not game_over:
+                for y, row in enumerate(current_p.shape):
+                    for x, val in enumerate(row):
+                        if val:
+                            pos = (GAME_X + (current_p.x+x)*30, GAME_Y + (current_p.y+y)*30)
+                            if current_p.is_bomb: pygame.draw.circle(win, current_p.color, (pos[0]+15, pos[1]+15), 12)
+                            else: pygame.draw.rect(win, current_p.color, (pos[0], pos[1], 29, 29))
+            pygame.display.update()
+
+
 
 
 
