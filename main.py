@@ -58,7 +58,18 @@ def draw_window(surface, grid, score, high_score, choosing, next_p, game_over):
         surface.blit(f_sub.render("R to Restart | Q to Quit", True, WHITE), (195, 330))
 
 
-    
+def main():
+    win = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    while True:
+        locked_pos = {}
+        run, choosing_mode, game_over = True, False, False
+        current_p = Piece(4, 0, random.choice(SHAPES))
+        next_p = Piece(4, 0, random.choice(SHAPES), random.random() < 0.25)
+        clock = pygame.time.Clock()
+        fall_time, score, placements = 0, 0, 0
+        play_bgm()
+        
+         
 
 
 
