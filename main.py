@@ -8,6 +8,9 @@ from game_objects import Piece
 pygame.init()
 pygame.mixer.init()
 
+def load_sound(file):
+    return pygame.mixer.Sound(file) if os.path.exists(file) else None
+
 
 
 
