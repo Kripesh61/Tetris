@@ -64,3 +64,6 @@ def draw_window(surface, grid, score, high_score, choosing, next_p, game_over):
 
 
 
+
+
+
