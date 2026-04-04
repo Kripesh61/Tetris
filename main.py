@@ -58,6 +58,9 @@ def draw_window(surface, grid, score, high_score, choosing, next_p, game_over):
         surface.blit(f_sub.render("R to Restart | Q to Quit", True, WHITE), (195, 330))
 
 
+    
+
+
 
 
 
