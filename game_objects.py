@@ -25,7 +25,7 @@ def create_grid(locked_pos={}):
          grid = [[BLACK for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
          for (x, y), color in locked_pos.items():
               if y >= 0: grid[y][x] = color
-              return grid
+         return grid
          
 def valid_space(piece, grid):
          accepted_pos = [(j, i) for i in range(GRID_HEIGHT) for j in range(GRID_WIDTH) if grid[i][j] == BLACK]
