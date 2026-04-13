@@ -8,6 +8,7 @@ class Piece:
         self.x = x
         self.y = y
         self.shape = shape
+        self.color = random.choice(COLORS)
         self.is_bomb = is_bomb
         if is_bomb: self.shape = [[1]]
 
