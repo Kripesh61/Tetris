@@ -35,6 +35,6 @@ class Piece:
                     pos = (piece.x + x, piece.y + y)
                     if pos[1] >= 0 and pos not in accepted_pos: return False
                     if pos[0] < 0 or pos[0] >= GRID_WIDTH or pos[1] >= GRID_HEIGHT: return False  
-                    return True 
+         return True 
               
 
