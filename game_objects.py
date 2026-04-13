@@ -18,8 +18,7 @@ class Piece:
                 except: return 0
 
     def save_high_score(self,new_score):
-            
-            if new_score > self.get_high_score():
+             if new_score > self.get_high_score():
                 with open(HS_FILE, "w") as f: f.write(str(new_score))
 
     def create_grid(locked_pos={}):
