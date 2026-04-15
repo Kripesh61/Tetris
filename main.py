@@ -9,7 +9,9 @@ pygame.init()
 pygame.mixer.init()
 
 def load_sound(file):
-    
+    if os.path.exists(file):
+        return pygame.mixer.Sound(file)
+    return None
 
 # Load Assets
 sfx_place = load_sound("place.wav")
