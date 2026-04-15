@@ -9,11 +9,11 @@ pygame.init()
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.mixer.init()
 
-def load_sound(file):
- base_path = os.path.dirname(os.path.abspath(__file__))
- full_path = os.path.join(base_path, file_name)
+def load_sound(file_name):
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    full_path = os.path.join(base_path, file_name)
     
- if os.path.exists(full_path):
+    if os.path.exists(full_path):
         try:
             sound = pygame.mixer.Sound(full_path)
             print(f" Loaded: {file_name}")
@@ -21,20 +21,20 @@ def load_sound(file):
         except Exception as e:
             print(f" Error loading {file_name}: {e}")
             return None
- else:
+    else:
         print(f" File not found: {full_path}")
-        return None 
+        return None
 
-# Load Assets
+# These lines must be at the far left margin
 sfx_place = load_sound("place.wav")
 sfx_explode = load_sound("explode.wav")
 sfx_gameover = load_sound("gameover.wav")
 
 def play_bgm():
-   base_path = os.path.dirname(os.path.abspath(__file__))
-full_path = os.path.join(base_path, "bgm.mp3")
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    full_path = os.path.join(base_path, "bgm.mp3")
     
-if os.path.exists(full_path):
+    if os.path.exists(full_path):
         try:
             pygame.mixer.music.load(full_path)
             pygame.mixer.music.set_volume(0.4)
@@ -42,7 +42,7 @@ if os.path.exists(full_path):
             print("🎵 Music Started!")
         except Exception as e:
             print(f" Music Error: {e}")
-else:
+    else:
         print(f" Music file not found: {full_path}") 
     
 
