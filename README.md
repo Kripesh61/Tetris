@@ -42,7 +42,17 @@ The "Piece" Class:
 I used a class to represent the Tetris blocks. This makes it easy to create new pieces. Each piece "knows" its own position (X and Y), its color, its shape, and whether or not it is a "Bomb" piece.
 
 
+    # Key Functions:
 
+create_grid(): This creates a 2D list (a list inside a list) that acts like a map of the game board.
+
+valid_space(): This is a collision function. It checks the grid to make sure a piece isn't trying to move through a wall or another block.
+
+clear_rows(): This scans the grid for full lines, removes them, and moves everything else down.
+
+load_sound(): This is a custom function I wrote to find the audio files. It uses "absolute paths" to make sure the Mac finds the sounds even if the folder moves.
+
+save_high_score(): This opens the text file and updates your record if you get a higher score than before.
 
 
 
