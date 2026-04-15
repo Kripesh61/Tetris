@@ -6,7 +6,7 @@ from game_objects import  Piece, get_high_score, save_high_score, create_grid, v
 
 # Initialize Pygame
 pygame.init()
-pygame.mixer.pre_init(44100, -16, 2, 512)
+pygame.mixer.pre_init(44100, -16, 2, 1024)
 pygame.mixer.init()
 
 def load_sound(file_name):
@@ -29,6 +29,10 @@ def load_sound(file_name):
 sfx_place = load_sound("place.wav")
 sfx_explode = load_sound("explode.wav")
 sfx_gameover = load_sound("gameover.wav")
+if sfx_explode:
+    sfx_explode.set_volume(0.6) 
+if sfx_gameover:
+    sfx_gameover.set_volume(0.7)
 
 def play_bgm():
     base_path = os.path.dirname(os.path.abspath(__file__))
