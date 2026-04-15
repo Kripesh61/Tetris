@@ -6,6 +6,7 @@ from game_objects import  Piece, get_high_score, save_high_score, create_grid, v
 
 # Initialize Pygame
 pygame.init()
+pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.mixer.init()
 
 def load_sound(file):
