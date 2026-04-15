@@ -10,8 +10,16 @@ pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.mixer.init()
 
 def load_sound(file):
-    if os.path.exists(file):
-        return pygame.mixer.Sound(file)
+    path = os.path.join(os.path.dirname(__file__), file)
+    if os.path.exists(path):
+        try:
+            sound = pygame.mixer.Sound(path)
+            print(f"✅ Loaded: {file}") # Check your terminal for this!
+            return sound
+        except Exception as e:
+            print(f"⚠️ Error loading {file}: {e}")
+    else:
+        print(f"❌ File not found: {file}")
     return None
 
 # Load Assets
