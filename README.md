@@ -23,6 +23,25 @@ Down Arrow: Make the piece fall faster.
 Space Bar: Hard drop (makes the piece land instantly).
 
 
+    #  The Files in this Project:
+
+main.py: This is the heart of the game. It runs the "Game Loop," handles the animations, and plays the music.
+
+game_objects.py: This is where all the math happens. It handles the grid, the shapes, and the scoring.
+
+constants.py: I put all my settings here, like the colors (RGB values) and the screen size, so the other files stay clean.
+
+high_score.txt: A simple text file that saves the best score so it doesn't disappear when you close the game.
+
+Sounds: I used bgm.mp3 for the music and .wav files for the "place," "explode," and "game over" sounds.
+
+
+    # How the Code Works (OOP & Functions):
+
+The "Piece" Class:
+I used a class to represent the Tetris blocks. This makes it easy to create new pieces. Each piece "knows" its own position (X and Y), its color, its shape, and whether or not it is a "Bomb" piece.
+
+
 
 
 
