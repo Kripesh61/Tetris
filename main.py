@@ -20,10 +20,15 @@ sfx_explode = load_sound("explode.wav")
 sfx_gameover = load_sound("gameover.wav")
 
 def play_bgm():
-    if os.path.exists("bgm.mp3"):
-        pygame.mixer.music.load("bgm.mp3")
-        pygame.mixer.music.set_volume(0.4)
-        pygame.mixer.music.play(-1)
+    def play_bgm():
+     path = os.path.join(os.path.dirname(__file__), "bgm.mp3")
+    if os.path.exists(path):
+        try:
+            pygame.mixer.music.load(path)
+            pygame.mixer.music.set_volume(0.4)
+            pygame.mixer.music.play(-1)
+        except Exception as e:
+            print(f"⚠️ Music error: {e}")
 
 def draw_window(surface, grid, score, high_score, choosing, next_p, game_over):
     surface.fill((15, 15, 30))
