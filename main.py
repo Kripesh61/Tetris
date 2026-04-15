@@ -63,6 +63,7 @@ def draw_window(surface, grid, score, high_score, choosing, next_p, game_over):
 def main():
     win = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     while True:
+        play_bgm()
         locked_pos = {}
         run, choosing_mode, game_over = True, False, False
         current_p = Piece(4, 0, random.choice(SHAPES))
